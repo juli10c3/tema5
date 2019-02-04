@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-arealfunktion</title>
+</head>
+
+<body>
+    <script>
+        let længde = prompt("Angiv længde");
+        let bredde = prompt("Angiv bredde");
+        let notwidth = isNaN(bredde); // er sand, hvis tal ikke er et tal - her er den false
+        let notlength = isNaN(længde);
+
+
+        if (notwidth == true) {
+            alert("Dette er ikke et tal");
+
+        } else if (notlength == true) {
+            alert("Dette er ikke et tal");
+        } else {
+            alert(`længde=${længde}` + `bredde=${bredde}` + `areal=${areal(længde, bredde)}`);
+        }
+
+        function areal(længde, bredde) {
+            return (længde * bredde);
+
+        }
+        if (confirm("vil du prøve igen?")) {
+            location.reload();
+
+        }
+    </script>
+</body>
+
+</html>
