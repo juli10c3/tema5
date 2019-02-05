@@ -22,7 +22,6 @@
             text-align: center;
             background-color: red;
         }
-
     </style>
 </head>
 
@@ -38,18 +37,26 @@
 
         function start() {
             console.log("start");
+
+            let firkant = document.querySelector(".firkant");
+            let cirkel = document.querySelector(".cirkel");
             document.querySelector(".firkant").innerHTML = `<img src= ${firkantURL} alt= "frø">`;
             document.querySelector(".cirkel").innerHTML = `<img src= ${cirkelURL} alt= "gris">`;
             document.removeEventListener("DOMContentLoaded", start);
-            document.addEventListener("click", klikHop);
+            firkant.addEventListener("click", flyt);
+            cirkel.addEventListener("click", stop);
 
-            function klikHop() {
-                document.querySelector(".cirkel").innerHTML = `<img src= ${firkantURL} alt= "frø">`;
-                document.querySelector(".firkant").innerHTML = `<img src= ${cirkelURL} alt= "gris">`;
-                document.removeEventListener("click", klikHop);
+            function flyt() {
+                let firkantStart = firkant.innerHTML;
+                firkant.innerHTML = cirkel.innerHTML;
+                cirkel.innerHTML = firkantStart;
+
+            }
+
+            function stop() {
+                firkant.removeEventListener("click", flyt);
             }
         }
-
     </script>
 </body>
 
