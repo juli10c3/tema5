@@ -13,18 +13,18 @@
         const weight = 50;
         const bmi = weight / (height * height);
         let resultat;
-        if (bmi < 19) {
-            resultat = "Fedmeklasse: Undervægtig";
+        if (bmi < 20) {
+            resultat = `BMI er ${bmi}. Fedmeklasse: Undervægtig`;
         } else if (bmi >= 20 && bmi < 25) {
-            resultat = "Fedmeklasse: Normal";
+            resultat = `BMI er ${bmi}. Fedmeklasse: Normal`;
         } else if (bmi >= 25 && bmi < 30) {
-            resultat = "Fedmeklasse: Overvægtig";
+            resultat = `BMI er ${bmi}. Fedmeklasse: Overvægtig`;
         } else if (bmi >= 30 && bmi < 35) {
-            resultat = "Fedmeklasse: Fed";
+            resultat = `BMI er ${bmi}. Fedmeklasse: Fed`;
         } else if (bmi >= 35 && bmi < 40) {
-            resultat = "Fedmeklasse: Svær fedme";
+            resultat = `BMI er ${bmi}. Fedmeklasse: Svær fedme`;
         } else if (bmi > 40) {
-            resultat = "Fedmeklasse: Ekstremt fed";
+            resultat = `BMI er ${bmi}. Fedmeklasse: Ekstremt fed`;
         }
         console.log(resultat);
     </script>
