@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        let date = new Date();
+        let time = date.getHours();
+
+        if (time >= 5 && time < 10) {
+            alert("Good morning");
+        } else if (time >= 10 && time < 18) {
+            alert("Good day");
+
+        } else if (time >= 18 && time < 24) {
+            alert("Good evening");
+
+        } else if (time >= 24 && time < 5) {
+            alert("Good night");
+
+        }
+    </script>
+</body>
+
+</html>
