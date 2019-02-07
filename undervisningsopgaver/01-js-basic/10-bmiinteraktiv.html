@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        const height = prompt("Angiv højde");
+        const weight = prompt("Angiv vægt");
+        const bmi = weight / (height * height);
+        let notheight = isNaN(height); // er sand, hvis tal ikke er et tal - her er den false
+        let notweight = isNaN(weight);
+
+
+        if (notheight == true) {
+            alert("Dette er ikke et tal");
+
+        } else if (notweight == true) {
+            alert("Dette er ikke et tal");
+        }
+        let resultat = `BMI er ${bmi}. Har du brug for at vide vægtklasse?`;
+
+        confirm(resultat);
+
+        if (confirm) {
+            if (bmi < 20) {
+                alert(`Vægtklasse: Undervægtig`);
+            } else if (bmi >= 20 && bmi < 25) {
+                alert(`Vægtklasse: Normal`);
+            } else if (bmi >= 25 && bmi < 30) {
+                alert(`Vægtklasse: Overvægtig`);
+            } else if (bmi >= 30 && bmi < 35) {
+                alert(`Vægtklasse: Fed`);
+            } else if (bmi >= 35 && bmi < 40) {
+                alert(`Vægtklasse: Svær fedme`);
+            } else if (bmi > 40) {
+                alert(`Vægtklasse: Ekstremt fed`);
+            }
+        }
+
+    </script>
+</body>
