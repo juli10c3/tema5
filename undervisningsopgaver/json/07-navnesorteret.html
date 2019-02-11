@@ -72,6 +72,7 @@
             font-size: 2rem;
 
         }
+
     </style>
 </head>
 
@@ -96,7 +97,7 @@
                 let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
                 personer = await jsonData.json();
                 personer.sort((a, b) => {
-                    return a.navn.localeCompare(b.navn);
+                    return b.navn.localeCompare(a.navn);
                 })
                 visPersoner();
             }
@@ -130,6 +131,7 @@
             }
             getJson();
         }
+
     </script>
 </body>
 
