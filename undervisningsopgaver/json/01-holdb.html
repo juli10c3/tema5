@@ -44,7 +44,6 @@
         a {
             font-family: 'Open sans';
         }
-
     </style>
 </head>
 
@@ -53,6 +52,7 @@
     <div id="liste"></div>
     <script>
         let personer = [];
+        let filter = "b";
         document.addEventListener("DOMContentLoaded", start);
 
         function start() {
@@ -64,18 +64,20 @@
                 visPersoner();
             }
 
+
             function visPersoner() {
                 personer.forEach(person => {
-                    dest.innerHTML += `
+                    if (person.hold == filter) {
+                        dest.innerHTML += `
                         <div class="person">
                             <h2>${person.navn}</h2> <img src=${person.billede}><br><a href="https://github.com/${person.github}/tema5">GITHUB</a>
                         </div>
                     `;
+                    }
                 })
             }
             getJson();
         }
-
     </script>
 </body>
 
