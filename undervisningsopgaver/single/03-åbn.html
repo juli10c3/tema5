@@ -48,6 +48,10 @@
             font-family: 'Open sans';
         }
 
+        p {
+            font-family: 'Open sans';
+        }
+
         .menu {
             text-align: center;
         }
@@ -145,7 +149,7 @@
                         let template = `
                         <article class="person">
                             <h2>${person.navn}</h2>
-                            <img src=${person.billede}><br>
+                            <img class="billede" src="${person.billede}"><br>
                             <a href="https://github.com/${person.github}/tema5">GITHUB</a>
                             <p>Hold: ${person.hold}, Alder:${person.alder}</p>
                         </article>
@@ -157,7 +161,7 @@
                             document.querySelector("#indhold").innerHTML = `
                             <article class="person>
                                 <h2>${person.navn}</h2>
-                                <img src=${person.billede}><br>
+                                <img class="billede" src="${person.billede}"><br>
                                 <p>Hold: ${person.hold}, Alder:${person.alder}</p>
                                 <h3>${person.navn}'s historie</h3>
                                 <p>${person.historie}</p>
@@ -169,20 +173,21 @@
                 })
             }
             //function visPersoner slut
-            document.querySelectorAll(".filter").forEach(elm => {
-                elm.addEventListener("click", filtrering);
-            })
+        })
+        document.querySelectorAll(".filter").forEach(elm => {
+            elm.addEventListener("click", filtrering);
+        })
 
-            function filtrering() {
-                filter = this.getAttribute("data-hold");
-                document.querySelector("h1").textContent = this.textContent;
-                document.querySelectorAll(".filter").forEach(elm => {
-                    elm.classList.remove("valgt");
-                })
-                this.classList.add("valgt");
-                visPersoner();
-            }
-            getJson();
+        function filtrering() {
+            filter = this.getAttribute("data-hold");
+            document.querySelector("h1").textContent = this.textContent;
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.classList.remove("valgt");
+            })
+            this.classList.add("valgt");
+            visPersoner();
+        }
+        getJson();
         }
     </script>
     <footer></footer>
