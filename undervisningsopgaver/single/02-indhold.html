@@ -38,6 +38,7 @@
 
         html {
             background-color: #f0efef;
+            overflow-y: hidden;
 
         }
 
@@ -78,13 +79,37 @@
             height: 100vh;
             position: fixed;
             background-color: lightpink;
+            display: none;
+        }
 
+        #indhold {
+            box-sizing: border-box;
+            background-color: lightcyan;
+            width: 90vw;
+            height: 90vh;
+            margin: auto;
+        }
+
+        #luk {
+            box-sizing: border-box;
+            text-align: right;
+            padding-right: 1em;
+
+        }
+
+        #luk button {
+            font-size: 2em;
+
+        }
     </style>
 </head>
 
 
 <body>
-    <div id="popup"></div>
+    <div id="popup">
+        <div id="luk"><button>X</button></div>
+        <div id="indhold"></div>
+    </div>
     <header>
         <h1>Alle</h1>
 
@@ -146,7 +171,6 @@
             }
             getJson();
         }
-
     </script>
     <footer></footer>
 </body>
