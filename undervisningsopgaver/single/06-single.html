@@ -75,13 +75,10 @@
 
         }
 
-        /*
-        #popup {
+        #singleview {
             width: 100vw;
             height: 100vh;
-            position: fixed;
             background-color: lightpink;
-            display: none;
         }
 
         #indhold {
@@ -103,34 +100,19 @@
             font-size: 2em;
 
         }
-*/
     </style>
 </head>
 
 
 <body>
-    <!--
-    <div id="popup">
+    <div id="singleview">
         <div id="luk"><button>X</button></div>
         <div id="indhold"></div>
     </div>
--->
-    <header>
-        <h1>Alle</h1>
-
-        <nav class="menu">
-            <button class="filter valgt" data-hold="alle">Alle</button>
-            <button class="filter" data-hold="a">Hold A</button>
-            <button class="filter" data-hold="b">Hold B</button>
-        </nav>
-    </header>
-    <main>
-        <section id="liste"></section>
-    </main>
 
     <script>
         let personer = [];
-        let filter = "alle";
+        let person;
         document.addEventListener("DOMContentLoaded", start);
 
         function start() {
@@ -139,47 +121,25 @@
             async function getJson() {
                 let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
                 personer = await jsonData.json();
-                personer.sort((a, b) => {
-                    return b.navn.localeCompare(a.navn);
-                })
-                visPersoner();
+
+                åbn();
             }
 
 
-            function visPersoner() {
-                dest.innerHTML = "";
-                personer.forEach(person => {
-                    if (filter == "alle" || filter == person.hold) {
-                        let template = `
-                        <article class="person">
-                            <h2>${person.navn}</h2>
-                            <img class="billede" src="${person.billede}"><br>
-                            <a href="https://github.com/${person.github}/tema5">GITHUB</a>
-                            <p>Hold: ${person.hold}, Alder:${person.alder}</p>
-                        </article>
-                    `;
-                        dest.insertAdjacentHTML("beforeend", template);
-                        dest.lastElementChild.addEventListener("click", () => {
-                            location.href = "06-single.html?github=" + person.github;
-                        });
-                    }
-                })
-            }
-            //function visPersoner slut
+            function åbn() {
+                //                document.querySelector("#indhold").innerHTML = `
+                // <article class="person>
+                //                                <h2>${person.navn}</h2>
+                //                                <img class=" billede" src="${person.billede}"><br>
+                // <p>Hold: ${person.hold}, Alder:${person.alder}</p>
+                // <h3>${person.navn}'s historie</h3>
+                // <p>${person.historie}</p>
+                // </article>
+                // `;
 
-            document.querySelectorAll(".filter").forEach(elm => {
-                elm.addEventListener("click", filtrering);
-            })
-
-            function filtrering() {
-                filter = this.getAttribute("data-hold");
-                document.querySelector("h1").textContent = this.textContent;
-                document.querySelectorAll(".filter").forEach(elm => {
-                    elm.classList.remove("valgt");
-                })
-                this.classList.add("valgt");
-                visPersoner();
             }
+
+
             getJson();
         }
     </script>
