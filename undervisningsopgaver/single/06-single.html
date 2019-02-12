@@ -100,6 +100,7 @@
             font-size: 2em;
 
         }
+
     </style>
 </head>
 
@@ -116,7 +117,6 @@
         document.addEventListener("DOMContentLoaded", start);
 
         function start() {
-            let dest = document.querySelector("#liste");
 
             async function getJson() {
                 let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
@@ -142,6 +142,7 @@
 
             getJson();
         }
+
     </script>
     <footer></footer>
 </body>

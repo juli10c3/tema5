@@ -75,13 +75,10 @@
 
         }
 
-        /*
-        #popup {
+        #singleview {
             width: 100vw;
             height: 100vh;
-            position: fixed;
             background-color: lightpink;
-            display: none;
         }
 
         #indhold {
@@ -92,94 +89,64 @@
             margin: auto;
         }
 
-        #luk {
+        #tilbage {
             box-sizing: border-box;
             text-align: right;
             padding-right: 1em;
 
         }
 
-        #luk button {
+        #tilbage button {
             font-size: 2em;
 
         }
-*/
     </style>
 </head>
 
 
 <body>
-    <!--
-    <div id="popup">
-        <div id="luk"><button>X</button></div>
+    <div id="singleview">
+        <div id="tilbage"><button>X</button></div>
         <div id="indhold"></div>
     </div>
--->
-    <header>
-        <h1>Alle</h1>
-
-        <nav class="menu">
-            <button class="filter valgt" data-hold="alle">Alle</button>
-            <button class="filter" data-hold="a">Hold A</button>
-            <button class="filter" data-hold="b">Hold B</button>
-        </nav>
-    </header>
-    <main>
-        <section id="liste"></section>
-    </main>
 
     <script>
-        let personer = [];
-        let filter = "alle";
+        let urlParams = new URLSearchParams(window.location.search);
+        let github = urlParams.get("github");
+        console.log("github");
+        let personer;
+        let person;
         document.addEventListener("DOMContentLoaded", start);
 
         function start() {
-            let dest = document.querySelector("#liste");
 
             async function getJson() {
                 let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
                 personer = await jsonData.json();
-                personer.sort((a, b) => {
-                    return b.navn.localeCompare(a.navn);
-                })
-                visPersoner();
-            }
-
-
-            function visPersoner() {
-                dest.innerHTML = "";
-                personer.forEach(person => {
-                    if (filter == "alle" || filter == person.hold) {
-                        let template = `
-                        <article class="person">
-                            <h2>${person.navn}</h2>
-                            <img class="billede" src="${person.billede}"><br>
-                            <a href="https://github.com/${person.github}/tema5">GITHUB</a>
-                            <p>Hold: ${person.hold}, Alder:${person.alder}</p>
-                        </article>
-                    `;
-                        dest.insertAdjacentHTML("beforeend", template);
-                        dest.lastElementChild.addEventListener("click", () => {
-                            location.href = "07-singleview.html?github=" + person.github;
-                        });
+                personer.forEach(obj => {
+                    if (obj.github == github) {
+                        person = obj;
                     }
                 })
+                åbn();
             }
-            //function visPersoner slut
 
-            document.querySelectorAll(".filter").forEach(elm => {
-                elm.addEventListener("click", filtrering);
+
+            function åbn() {
+                document.querySelector("#indhold").innerHTML = `
+                    <article class="person">
+                        <h2>${person.navn}</h2>
+                        <img class="billede" src="${person.billede}"><br>
+                        <p>Hold: ${person.hold}, Alder:${person.alder}</p>
+                        <h3>${person.navn}'s historie</h3>
+                        <p>${person.historie}</p>
+                    </article>
+                    `;
+
+            }
+            document.querySelector("#tilbage button").addEventListener("click", () => {
+                location.href = "05-kald.html"
             })
-
-            function filtrering() {
-                filter = this.getAttribute("data-hold");
-                document.querySelector("h1").textContent = this.textContent;
-                document.querySelectorAll(".filter").forEach(elm => {
-                    elm.classList.remove("valgt");
-                })
-                this.classList.add("valgt");
-                visPersoner();
-            }
             getJson();
         }
     </script>
