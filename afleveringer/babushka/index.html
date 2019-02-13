@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personliste</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Staatliches" rel="stylesheet">
+    <style>
+        .retter {
+
+            margin: 10px;
+            width: 200px;
+
+        }
+
+        img {
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        #liste {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            text-align: center;
+
+        }
+
+        .ret {
+            background-color: #d4b6b6;
+            margin: 7px;
+            border: 6px solid #cca8af;
+        }
+
+        html {
+            background-color: #f0efef;
+
+        }
+
+        h2 {
+            font-family: 'Staatliches';
+            font-size: 2rem;
+        }
+
+        a {
+            font-family: 'Open sans';
+        }
+
+        p {
+            font-family: 'Open sans';
+        }
+
+        .menu {
+            text-align: center;
+        }
+
+        .valgt {
+            background-color: #c15656;
+        }
+
+        button {
+            height: 3vw;
+            width: 7vw;
+            margin: 10px;
+            border: 2px solid #cca8af;
+
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Staatliches';
+            font-size: 2rem;
+
+        }
+
+        /*
+        #popup {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            background-color: lightpink;
+            display: none;
+        }
+
+        #indhold {
+            box-sizing: border-box;
+            background-color: lightcyan;
+            width: 90vw;
+            height: 90vh;
+            margin: auto;
+        }
+
+        #luk {
+            box-sizing: border-box;
+            text-align: right;
+            padding-right: 1em;
+
+        }
+
+        #luk button {
+            font-size: 2em;
+
+        }
+*/
+    </style>
+</head>
+
+
+<body>
+    <!--
+    <div id="popup">
+        <div id="luk"><button>X</button></div>
+        <div id="indhold"></div>
+    </div>
+-->
+    <header>
+        <h1>Babushka</h1>
+
+        <nav class="menu">
+            <button class="filter valgt" data-kategori="alle">Alle</button>
+            <button class="filter" data-kategori="forretter">Forretter</button>
+            <button class="filter" data-kategori="hovedretter">Hovedretter</button>
+            <button class="filter" data-kategori="desserter">Desserter</button>
+            <button class="filter" data-kategori="drikkevarer">Drikkevarer</button>
+        </nav>
+    </header>
+    <main>
+        <section id="liste"></section>
+    </main>
+
+    <script>
+        let retter = [];
+        let filter = "alle";
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            let dest = document.querySelector("#liste");
+
+            async function getJson() {
+                let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+                retter = await jsonData.json();
+                retter.sort((a, b) => {
+                    return a.navn.localeCompare(b.navn);
+                })
+                visRetter();
+            }
+
+
+            function visRetter() {
+                dest.innerHTML = "";
+                retter.forEach(ret => {
+                    if (filter == "alle" || filter == ret.kategori) {
+                        let template = `
+                        <article class="ret">
+                            <h2>${ret.navn}</h2>
+                            <img class="billede" src="imgs/large/${ret.billede}.jpg"><br>
+                            <p>${ret.kort}</p>
+                            <p>${ret.pris}.-</p>
+                        </article>
+                    `;
+                        dest.insertAdjacentHTML("beforeend", template);
+                        dest.lastElementChild.addEventListener("click", () => {
+                            location.href = "singleview.html?id=" + ret.id;
+                        });
+                    }
+                })
+            }
+            //function visPersoner slut
+
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.addEventListener("click", filtrering);
+            })
+
+            function filtrering() {
+                filter = this.getAttribute("data-kategori");
+                document.querySelector("h1").textContent = this.textContent;
+                document.querySelectorAll(".filter").forEach(elm => {
+                    elm.classList.remove("valgt");
+                })
+                this.classList.add("valgt");
+                visRetter();
+            }
+            getJson();
+        }
+    </script>
+    <footer></footer>
+</body>
+
+</html>
