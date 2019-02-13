@@ -4,11 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personliste</title>
+    <title>Babushka</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Staatliches" rel="stylesheet">
     <style>
         img {
-            width: 30%;
+            height: 20vw;
             border-radius: 20px;
         }
 
@@ -18,7 +18,7 @@
         }
 
         html {
-            background-color: #f0efef;
+            background-color: #ffffff;
 
         }
 
@@ -38,55 +38,64 @@
 
         p {
             font-family: 'Open sans';
-            width: 40vw;
-            margin-left: 29.5vw;
-        }
 
-        .menu {
-            text-align: center;
-        }
 
-        .valgt {
-            background-color: #c15656;
         }
 
         button {
-            height: 3vw;
-            width: 7vw;
+            height: 4vw;
+            width: 4vw;
             margin: 10px;
-            border: 2px solid #cca8af;
+            background-color: #b5b9a2;
 
         }
 
         h1 {
             text-align: center;
             font-family: 'Staatliches', sans-serif;
-            font-size: 2.5rem;
+            font-size: 7rem;
+            margin-top: 0;
+            padding-top: 70px;
+            letter-spacing: 70px;
+        }
+
+        header {
+            background-color: #ffdf98;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
 
         }
+
 
         #singleview {
             width: 100vw;
             height: 100vh;
+            text-align: center;
+
         }
 
         #indhold {
             box-sizing: border-box;
-            width: 100vw;
-            height: 100vh;
-            margin: auto;
-            text-align: center;
+            margin-left: 170px;
+            margin-right: 170px;
+            margin-bottom: 30px;
+            padding: 40px;
+            background-color: #ebefd7;
+            box-shadow: 6px 6px 16px lightgrey;
+
         }
 
         #tilbage {
             box-sizing: border-box;
-            text-align: right;
-            padding-right: 1em;
-
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            right: 8.5vw;
         }
 
         #tilbage button {
             font-size: 2em;
+
 
         }
     </style>
@@ -95,7 +104,11 @@
 
 <body>
     <div id="singleview">
-        <div id="tilbage"><button>X</button></div>
+        <header>
+            <div id="tilbage"><button>X</button></div>
+            <h1>BABUSHKA</h1>
+
+        </header>
         <div id="indhold"></div>
     </div>
 
@@ -104,6 +117,7 @@
         let id = urlParams.get("id");
         let retter;
         let ret;
+
         document.addEventListener("DOMContentLoaded", start);
 
         function start() {
@@ -123,15 +137,17 @@
             function åbn() {
                 document.querySelector("#indhold").innerHTML = `
                     <article class="ret">
-                        <h2>${ret.navn}</h2>
                         <img class="billede" src="imgs/large/${ret.billede}.jpg"><br>
+                        <h2>${ret.navn}</h2>
                         <h3>Beskrivelse</h3>
                         <p>${ret.lang}</p>
+                        <h3>Oprindelse</h3>
                         <p>${ret.oprindelse}</p>
                     </article>
                     `;
 
             }
+
             document.querySelector("#tilbage button").addEventListener("click", () => {
                 location.href = "index.html"
             })
