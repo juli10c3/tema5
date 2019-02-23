@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taco 'bout food</title>
+
+    <style>
+        img {
+            width: 100%;
+        }
+
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin-top: 50px;
+            text-align: center;
+            margin-left: 20%;
+            margin-right: 20%;
+            grid-gap: 20px;
+        }
+
+        .ret {
+            margin: 0;
+
+            display: grid;
+            grid-template-areas:
+                "img"
+                "h2"
+                "kort"
+                "pris";
+            align-items: baseline;
+        }
+
+        #background {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.83), rgba(255, 255, 255, 0.83)), url("baggrund/background.jpg");
+        }
+
+
+        @font-face {
+            font-family: 'cf_tangerine_grungeregular';
+            src: url('cftangerinegrunge-regular-webfont.woff2') format('woff2'),
+                url('cftangerinegrunge-regular-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        h2 {
+            font-family: 'cf_tangerine_grungeregular';
+            font-size: 1.5em;
+        }
+
+        p {
+            font-family: 'avenir';
+            font-size: 1em;
+            margin: 20px;
+        }
+
+
+        .ret h2 {
+            grid-area: "h2";
+        }
+
+
+        .ret .kort {
+            grid-area: "kort";
+        }
+
+        .ret img {
+            grid-area: "img";
+        }
+
+        .ret .pris {
+            grid-area: "pris";
+        }
+
+        .menu {
+            text-align: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-gap: 10px;
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+
+        .menu .valgt {
+            background-color: #fef6c1;
+            color: #f2bf7c;
+        }
+
+        button {
+            height: 3vw;
+            background-color: #f2bf7c;
+            color: #fef6c1;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'cf_tangerine_grungeregular';
+            font-size: 2rem;
+            margin-top: 0;
+            padding-top: 100px;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(rgba(6, 6, 6, 0.71), rgba(0, 0, 0, 0.49), rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0));
+        }
+
+        li {
+            float: right;
+        }
+
+        li a {
+            display: block;
+            color: #fef6c1;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-family: 'cf_tangerine_grungeregular';
+            font-size: 1rem;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #f2bf7c;
+        }
+
+        li .valgt {
+            color: black;
+        }
+
+        header img {
+            width: 55px;
+            margin-left: 40px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="background">
+        <header>
+
+            <ul>
+                <li style="float:left"><img src="logo/taco_logo.svg"></li>
+                <li><a href="#">KONTAKT</a></li>
+                <li><a href="#">BORDBESTILLING</a></li>
+                <li><a class="valgt" href="menu.html">MENU</a></li>
+                <li><a href="#forside">FORSIDE</a></li>
+            </ul>
+        </header>
+        <main>
+            <h1>MENU</h1>
+            <nav class="menu">
+                <button class="filter valgt" data-kategori="alle">Alle</button>
+                <button class="filter" data-kategori="forretter">Forretter</button>
+                <button class="filter" data-kategori="hovedretter">Hovedretter</button>
+                <button class="filter" data-kategori="desserter">Desserter</button>
+                <button class="filter" data-kategori="drikkevarer">Drikkevarer</button>
+            </nav>
+            <section id="liste"></section>
+        </main>
+
+        <script>
+            let retter = [];
+            let filter = "alle";
+            document.addEventListener("DOMContentLoaded", start);
+
+            function start() {
+                let dest = document.querySelector("#liste");
+
+                async function getJson() {
+                    let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1nHoxLhnA6RQcrPTugYp0xP_LEzuCM5zNQ0SmYeESuDs");
+                    retter = await jsonData.json();
+                    retter.sort((a, b) => {
+                        return a.navn.localeCompare(b.navn);
+                    })
+                    visRetter();
+                }
+
+                function visRetter() {
+                    dest.innerHTML = "";
+                    retter.forEach(ret => {
+                        if (filter == "alle" || filter == ret.kategori) {
+                            let template = `
+                        <article class="ret">
+                            <img class="billede" src="mad/${ret.billede}.jpg"><br>
+                            <br><h2>${ret.navn}</h2>
+                            <br><p class="kort">${ret.kort}</p>
+                            <br>
+                            <p class="pris">${ret.pris}.-</p>
+                        </article>
+                    `;
+                            dest.insertAdjacentHTML("beforeend", template);
+                            dest.lastElementChild.addEventListener("click", () => {
+                                location.href = "singleview.html?id=" + ret.id;
+                            });
+                        }
+                    })
+                }
+                //function visRetter slut
+
+                document.querySelectorAll(".filter").forEach(elm => {
+                    elm.addEventListener("click", filtrering);
+                })
+
+
+                function filtrering() {
+                    filter = this.getAttribute("data-kategori");
+
+                    document.querySelectorAll(".filter").forEach(elm => {
+                        elm.classList.remove("valgt");
+                    })
+                    this.classList.add("valgt");
+                    visRetter();
+                }
+                getJson();
+            }
+        </script>
+        <footer></footer>
+    </div>
+</body>
+
+</html>

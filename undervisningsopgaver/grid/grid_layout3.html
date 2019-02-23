@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Css Grid</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: [col1-start] 1fr [col2-start] 1fr [col3-start] 1fr [col3-end];
+            grid-template-rows: [row1-start] 1fr[row2-start] 1fr [row3-start] 1fr [row4-start] 1fr [row4-end];
+            grid-gap: 10px;
+        }
+
+        .item {
+            border: 1px solid #000;
+            padding: 50px;
+        }
+
+        .item-a {
+            background-color: yellow;
+            grid-column: col1-start / col3-end;
+            grid-row: row1-start;
+
+        }
+
+        .item-b {
+            background-color: green;
+            grid-column: col1-start / col3-end;
+            grid-row: row2-start / row4-start;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 5px;
+            padding: 20px;
+
+        }
+
+        .item-c {
+            background-color: red;
+            grid-column: col1-start / col3-end;
+            grid-row: row4-start;
+        }
+
+        .item-d {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item item-a">A</div>
+        <div class="item item-b">
+            <div class="item item-d">D</div>
+            <div class="item item-d">D</div>
+            <div class="item item-d">D</div>
+            <div class="item item-d">D</div>
+            <div class="item item-d">D</div>
+            <div class="item item-d">D</div>
+            <div class="item item-d">D</div>
+            <div class="item item-d">D</div>
+        </div>
+        <div class="item item-c">C</div>
+
+    </div>
+</body>
+</html>
