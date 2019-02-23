@@ -13,11 +13,11 @@
 
         #liste {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             margin-top: 50px;
             text-align: center;
-            margin-left: 20%;
-            margin-right: 20%;
+            padding-left: 20%;
+            padding-right: 20%;
             grid-gap: 20px;
         }
 
@@ -25,16 +25,12 @@
             margin: 0;
 
             display: grid;
-            grid-template-areas:
-                "img"
-                "h2"
-                "kort"
-                "pris";
-            align-items: baseline;
+            grid-template-rows: [row1-start] 0.4fr [row2-start] 0.4fr [row3-start] 0.4fr [row4-start] auto [row4-end];
+
         }
 
         #background {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.83), rgba(255, 255, 255, 0.83)), url("baggrund/background.jpg");
+            background-image: linear-gradient(rgba(255, 255, 255, 0.89), rgba(255, 255, 255, 0.89)), url("baggrund/background.jpg");
         }
 
 
@@ -48,37 +44,39 @@
 
         h2 {
             font-family: 'cf_tangerine_grungeregular';
-            font-size: 1.5em;
+            font-size: 1.5rem;
         }
 
         p {
             font-family: 'avenir';
-            font-size: 1em;
+            font-size: 1rem;
             margin: 20px;
         }
 
 
         .ret h2 {
-            grid-area: "h2";
+            grid-row: row2-start;
         }
 
 
         .ret .kort {
-            grid-area: "kort";
+            grid-row: row3-start;
+            margin: 0;
         }
 
         .ret img {
-            grid-area: "img";
+            grid-row: row1-start;
         }
 
         .ret .pris {
-            grid-area: "pris";
+            grid-row: row4-start;
+            margin: 0;
         }
 
         .menu {
             text-align: center;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             grid-gap: 10px;
             margin-left: 20%;
             margin-right: 20%;
@@ -90,7 +88,6 @@
         }
 
         button {
-            height: 3vw;
             background-color: #f2bf7c;
             color: #fef6c1;
         }
@@ -142,6 +139,7 @@
             width: 55px;
             margin-left: 40px;
         }
+
     </style>
 </head>
 
@@ -155,7 +153,7 @@
                 <li><a href="#">KONTAKT</a></li>
                 <li><a href="#">BORDBESTILLING</a></li>
                 <li><a class="valgt" href="menu.html">MENU</a></li>
-                <li><a href="#forside">FORSIDE</a></li>
+                <li><a href="index.html">FORSIDE</a></li>
             </ul>
         </header>
         <main>
@@ -225,6 +223,7 @@
                 }
                 getJson();
             }
+
         </script>
         <footer></footer>
     </div>
