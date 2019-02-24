@@ -27,6 +27,95 @@
             font-weight: normal;
             font-style: normal;
         }
+        
+/*fonts-------*/
+        
+/*header start -------*/
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(rgba(6, 6, 6, 0.71), rgba(0, 0, 0, 0.49), rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0));
+        }
+
+        li {
+            float: right;
+        }
+
+        li a {
+            display: block;
+            color: #fef6c1;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-family: 'cf_tangerine_grungeregular';
+            font-size: 1rem;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #f2bf7c;
+        }
+
+        li .valgt {
+            color: black;
+        }
+
+        header img {
+            width: 55px;
+            margin-left: 40px;
+        }
+
+        @media only screen and (max-width: 725px) {
+            #pc {
+                display: none;
+
+            }
+
+        }
+        
+/*burgermenu start ------*/
+        
+        #menuknap {
+            display: inline-block;
+            font-size: 2rem;
+            font-family: sans-serif;
+            position: fixed;
+            right: 20px;
+            z-index: 1;
+
+        }
+        @media only screen and (min-width: 725px) {
+
+            #menuknap {
+                display: none;
+            }
+        }
+        #burgermenu {
+            list-style-type: none;
+            text-align: center;
+            position: fixed;
+            display: grid;            
+            grid-template-columns: 1fr;
+        }
+
+        #burgermenu a {
+            text-decoration: none;
+            color: white;
+            line-height: 70px;
+        }
+        
+            .hidden {
+            Transform: scale(0);
+        }
+
+/*burgermenu slut*/
+        
         img {
             width: 100%;
         }
@@ -113,46 +202,6 @@
             padding-top: 100px;
         }
 
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            overflow: hidden;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: linear-gradient(rgba(6, 6, 6, 0.71), rgba(0, 0, 0, 0.49), rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0));
-        }
-
-        li {
-            float: right;
-        }
-
-        li a {
-            display: block;
-            color: #fef6c1;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-family: 'cf_tangerine_grungeregular';
-            font-size: 1rem;
-        }
-
-        li a:hover:not(.active) {
-            background-color: #f2bf7c;
-        }
-
-        li .valgt {
-            color: black;
-        }
-
-        header img {
-            width: 55px;
-            margin-left: 40px;
-        }
-
         body {
             margin: 0;
             padding: 0;
@@ -165,14 +214,23 @@
 <body>
     <div id="background">
         <header>
-
-            <ul>
+<nav>
+            <ul id="pc">
                 <li style="float:left"><img src="logo/taco_logo.svg"></li>
                 <li><a href="#">KONTAKT</a></li>
                 <li><a href="#">BORDBESTILLING</a></li>
                 <li><a class="valgt" href="menu.html">MENU</a></li>
                 <li><a href="index.html">FORSIDE</a></li>
             </ul>
+            <div id="menuknap">☰</div>
+            <ul id="burgermenu" class="hidden">
+                <li><a href="index.html">FORSIDE</a></li>
+                <li><a href="menu.html">MENU</a></li>
+                <li><a href="#">BORDBESTILLING</a></li>
+                <li><a href="#">KONTAKT</a></li>
+            </ul>
+
+        </nav>
         </header>
         <main>
             <h1>MENU</h1>
@@ -186,7 +244,8 @@
             <section id="liste"></section>
         </main>
 
-        <script>
+        <script src="script.js"></script>
+           <script>
             let retter = [];
             let filter = "alle";
             document.addEventListener("DOMContentLoaded", start);
