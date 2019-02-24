@@ -140,6 +140,11 @@
             margin-left: 40px;
         }
 
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
     </style>
 </head>
 
@@ -177,7 +182,7 @@
                 let dest = document.querySelector("#liste");
 
                 async function getJson() {
-                    let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1nHoxLhnA6RQcrPTugYp0xP_LEzuCM5zNQ0SmYeESuDs");
+                    let jsonData = await fetch("sheet.json");
                     retter = await jsonData.json();
                     retter.sort((a, b) => {
                         return a.navn.localeCompare(b.navn);

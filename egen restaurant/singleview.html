@@ -7,10 +7,7 @@
     <title>Babushka</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Staatliches" rel="stylesheet">
     <style>
-        #background img {
-            max-width: 1920px;
-        }
-
+        
 
 
         html {
@@ -78,6 +75,10 @@
 
         }
 
+        .billede{
+            z-index: -1;
+            position: absolute;
+        }
         #tilbage {
             box-sizing: border-box;
             text-align: center;
@@ -153,7 +154,7 @@
 </head>
 
 
-<body>
+<body id=baggrund>
     <div id="background">
 
         <div id="singleview">
@@ -185,7 +186,7 @@
         function start() {
 
             async function getJson() {
-                let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1nHoxLhnA6RQcrPTugYp0xP_LEzuCM5zNQ0SmYeESuDs");
+                let jsonData = await fetch("sheet.json");
                 retter = await jsonData.json();
                 retter.forEach(obj => {
                     if (obj.id == id) {
@@ -198,6 +199,7 @@
 
             function åbn() {
                 document.querySelector("#indhold").innerHTML = `
+
                     <article class="ret">
                        <img class="billede" src="mad/${ret.billede}.jpg">
                         <h2>${ret.navn}</h2>
@@ -207,6 +209,7 @@
                         <p>${ret.oprindelse}</p>
                     </article>
                     `;
+
             }
 
             document.querySelector("#tilbage button").addEventListener("click", () => {

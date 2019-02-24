@@ -1,0 +1,137 @@
+[{
+    "id": 1,
+    "kategori": "forretter",
+    "navn": "TACOS AL PASTOR",
+    "pris": 49,
+    "kort": "Soft corn taco, slaw, green salad, coriander mayo, guacamole, fresh lime, potato",
+    "lang": "",
+    "billede": "tacos_pastor"
+}, {
+    "id": 2,
+    "kategori": "forretter",
+    "navn": "SMOKED OYSTER",
+    "pris": 59,
+    "kort": "Smoked oyster, cream cheese, worcestershire sauce, cayenne pepper",
+    "lang": "",
+    "billede": "smoked_oyster"
+}, {
+    "id": 3,
+    "kategori": "forretter",
+    "navn": "GOOSEBERRY SALSA",
+    "pris": 39,
+    "kort": "Gooseberry, avocado, onion, coriander, jalape\u00f1o, lemon, chips",
+    "lang": "",
+    "billede": "guacamole"
+}, {
+    "id": 4,
+    "kategori": "hovedretter",
+    "navn": "PORK CARNITAS",
+    "pris": 108,
+    "kort": "Braised pork belly, pasilla salsa, onion, cilantro",
+    "lang": "",
+    "billede": "pork_carnitas"
+}, {
+    "id": 5,
+    "kategori": "hovedretter",
+    "navn": "HUEVO RANCHERO",
+    "pris": 108,
+    "kort": "Fried egg, casera salsa, pork cracklings, onion, cilantro",
+    "lang": "",
+    "billede": "huevo_ranchero"
+}, {
+    "id": 6,
+    "kategori": "hovedretter",
+    "navn": "LENGUA",
+    "pris": 118,
+    "kort": "Beef tongue with guacachile, onion, cilantro",
+    "lang": "",
+    "billede": "lengua"
+}, {
+    "id": 7,
+    "kategori": "hovedretter",
+    "navn": "MOLE",
+    "pris": 98,
+    "kort": "Roasted chicken, mole negro, crema, sesame seeds",
+    "lang": "",
+    "billede": "mole"
+}, {
+    "id": 8,
+    "kategori": "hovedretter",
+    "navn": "GRILLED CHEESE",
+    "pris": 98,
+    "kort": "Fresh cheese, guacachile, pickled red onions, cilantro",
+    "lang": "",
+    "billede": "grilled_cheese"
+}, {
+    "id": 9,
+    "kategori": "drikkevarer",
+    "navn": "MICHELADA",
+    "pris": 69,
+    "kort": "Valentina salsa, tahin, worchester sauce, lime juice, worm salt, mexican beer",
+    "lang": "",
+    "billede": "michelada"
+}, {
+    "id": 10,
+    "kategori": "drikkevarer",
+    "navn": "TEPACHE",
+    "pris": 69,
+    "kort": "Fermented pineapple drink",
+    "lang": "",
+    "billede": "tepache"
+}, {
+    "id": 11,
+    "kategori": "drikkevarer",
+    "navn": "LIMONADE",
+    "pris": 69,
+    "kort": "Lemon and lime juice",
+    "lang": "",
+    "billede": "limonade"
+}, {
+    "id": 12,
+    "kategori": "drikkevarer",
+    "navn": "HIBUSCUS TEA",
+    "pris": 69,
+    "kort": "Sweet hibuscus tea",
+    "lang": "",
+    "billede": "hibuscus_tea"
+}, {
+    "id": 13,
+    "kategori": "desserter",
+    "navn": "COCONUT",
+    "pris": 39,
+    "kort": "Coconut milk, cream, coconut flakes, condied cacao nibs",
+    "lang": "",
+    "billede": "coconut"
+}, {
+    "id": 14,
+    "kategori": "desserter",
+    "navn": "AVOCADO",
+    "pris": 39,
+    "kort": "Avocado, cajeta, freeze dried raspberries",
+    "lang": "",
+    "billede": "avocado"
+}, {
+    "id": 15,
+    "kategori": "desserter",
+    "navn": "TRES LECHES",
+    "pris": 39,
+    "kort": "Sponge cake, sweetened condensed milk, cream, coconut milk",
+    "lang": "",
+    "billede": "tres_leches"
+}, {
+    "id": 16,
+    "kategori": "desserter",
+    "navn": "HIBISCUS",
+    "pris": 39,
+    "kort": "Hibiscus tea, chili powder",
+    "lang": "",
+    "billede": "hibiscus"
+}, {
+    "id": 17,
+    "kategori": "desserter",
+    "navn": "LAKRDIS",
+    "pris": 39,
+    "kort": "Oialla chocolate, liquerice, cacao nibs",
+    "lang": "",
+    "billede": "lakrids"
+}]
