@@ -22,7 +22,7 @@ function toggleMenu() {
     } else {
         //menuen er nu vist - ændrer menuknap til kryds
         document.querySelector("#menuknap").textContent = "X";
-        
+
     }
 }
 
