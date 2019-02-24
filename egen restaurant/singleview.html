@@ -8,6 +8,9 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Staatliches" rel="stylesheet">
     <style>
         
+        html{
+            background-color: black;
+        }
 
         @font-face {
             font-family: 'Avenir LT Std 65 Medium Oblique';
@@ -31,8 +34,7 @@
 
 
         #singleview {
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
             text-align: center;  
 
         }
@@ -42,9 +44,30 @@
             padding: 40px;
             color: aliceblue;
             margin: 20vw;
-            
         }
+        
+        
+         @media only screen and (max-width: 1040px) {
 
+         #singleview{
+             margin-top: 25vw;
+         }
+
+ }
+        @media only screen and (max-width: 798px) {
+
+         #indhold {
+             margin: 10vw;
+         }
+
+        }
+        @media only screen and (max-width: 468px) {
+
+         #indhold {
+             margin: 5vw;
+         }
+
+        }
         .ret{
             display: grid;
             grid-template-rows: [row1-start] 0.2fr [row2-start] 0.2fr [row3-start] 0.2fr [row4-start] 0.2fr [row4-end];
@@ -52,12 +75,21 @@
             justify-content: center;
             
         }
+        
         .billede{
             z-index: -1;
-            position: absolute; 
-            left: 0;
-            top: 0;
+          /* Set rules to fill background */
+            min-height: 100%;
+            min-width: 1020px;
+
+              /* Set up proportionate scaling */
             width: 100%;
+            height: auto;
+
+              /* Set up positioning */
+            position: fixed;
+            top: 0;
+            left: 0;
             text-align: center;
             
         }
@@ -70,8 +102,23 @@
             background-color: rgba(0, 0, 0, 0.7);
             color: white;
             margin: 0;
-            font-weight: 
             
+        }
+        
+        @media only screen and (max-width: 1040px) {
+
+         #indhold h2{
+             font-size: 1.5rem;
+         }
+
+        }
+        
+        @media only screen and (max-width: 798px) {
+
+         #indhold h2{
+             font-size: 1.2rem;
+         }
+
         }
 
         #indhold h3 {
@@ -84,7 +131,22 @@
             margin: 0;
 
         }
+        
+         @media only screen and (max-width: 1040px) {
+    
+        
+         #indhold h3 {
+             font-size: 1rem;
+         }
 
+ }
+        @media only screen and (max-width: 798px) {
+
+         #indhold h3{
+             font-size: 0.7rem;
+         }
+
+        }
         #indhold h4 {
             font-family: 'Avenir LT Std 65 Medium Oblique';
             font-size: 1.5rem;
@@ -96,6 +158,21 @@
 
         }
         
+        @media only screen and (max-width: 1040px) {
+
+         #indhold h4 {
+             font-size:1rem; 
+         }
+
+ }
+        @media only screen and (max-width: 798px) {
+
+         #indhold h4{
+             font-size: 0.7rem;
+         }
+
+        }
+        
         #indhold p {
             font-family: 'Avenir LT Std 65 Medium Oblique';
             font-size: 2rem;
@@ -103,9 +180,20 @@
             margin: 0;
     
         }
+         @media only screen and (max-width: 1040px) {
 
-    
+         #indhold p{
+             font-size: 1.5rem;
+         }
+ }
 
+        @media only screen and (max-width: 798px) {
+
+         #indhold p{
+             font-size: 1rem;
+         }
+
+        }
         ul {
             list-style-type: none;
             margin: 0;
