@@ -105,9 +105,12 @@
         }
 
         header img {
-            width: 55px;
-            margin-left: 40px;
+            width: 60px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
         }
+        
           @media only screen and (max-width: 725px) {
             #pc {
                 display: none;
@@ -120,11 +123,12 @@
 
         #menuknap {
             display: inline-block;
-            font-size: 2rem;
+            font-size: 2.7rem;
             font-family: sans-serif;
             position: fixed;
             right: 20px;
             z-index: 2;
+            color: white;
 
         }
         @media only screen and (min-width: 725px) {
@@ -137,16 +141,19 @@
             list-style-type: none;
             text-align: center;
             position: fixed;
+            margin: 0;
             display: grid;
             grid-template-columns: 1fr;
             z-index: 1;
+            background-color: rgba(0, 0, 0, 0.65);
+            padding-top: 30px;
+
         }
 
         #burgermenu a {
             text-decoration: none;
             color: white;
             line-height: 70px;
-            background-color: rgba(0, 0, 0, 0.65);
 
         }
 
@@ -154,7 +161,24 @@
             Transform: scale(0);
         }
 
+          #logo {
+            position: fixed;
+            display: inline-block;
+            top: 11px;
+            left: -21px;
+            
+        }
+        
+        #logo img{
+            width: 55px;
+        }
+        
+        @media only screen and (min-width: 725px) {
 
+            #logo {
+                display: none;
+            }
+        }
 /*header og burger slut --------*/
 
 
@@ -289,8 +313,8 @@
                 <li><a class="valgt" href="index.html">FORSIDE</a></li>
             </ul>
 
-            <div id="menuknap">☰
-            </div>
+            <div id="menuknap">☰</div>
+    <div id=logo><a href="index.html"><img src="logo/taco_logo.svg"></a></div>
             <ul id="burgermenu" class="hidden">
                 <li><a href="index.html">FORSIDE</a></li>
                 <li><a href="menu.html">MENU</a></li>

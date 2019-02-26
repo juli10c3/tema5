@@ -48,7 +48,7 @@
             float: right;
         }
 
-        li a {
+        li a.menu_liste {
             display: block;
             color: #fef6c1;
             text-align: center;
@@ -58,7 +58,7 @@
             font-size: 1rem;
         }
 
-        li a:hover:not(.active) {
+        li a.menu_liste:hover:not(.active) {
             background-color: #f2bf7c;
         }
 
@@ -67,8 +67,10 @@
         }
 
         header img {
-            width: 55px;
-            margin-left: 40px;
+            width: 60px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
         }
 
         @media only screen and (max-width: 725px) {
@@ -83,38 +85,53 @@
 
         #menuknap {
             display: inline-block;
-            font-size: 2rem;
+            font-size:2.7rem;
             font-family: sans-serif;
             position: fixed;
             right: 20px;
             z-index: 1;
 
         }
+        
         @media only screen and (min-width: 725px) {
 
             #menuknap {
                 display: none;
             }
         }
+        
         #burgermenu {
             list-style-type: none;
             text-align: center;
             position: fixed;
             display: grid;
             grid-template-columns: 1fr;
+            background-color: rgba(0, 0, 0, 0.65);
+            padding-top: 30px;
         }
 
         #burgermenu a {
             text-decoration: none;
             color: white;
             line-height: 70px;
-            background-color: rgba(0, 0, 0, 0.65);
-
         }
 
             .hidden {
             Transform: scale(0);
         }
+        
+        #logo {
+            position: fixed;
+            display: inline-block;
+            top: 11px;
+            left: -21px;
+            
+        }
+        
+        #logo img{
+            width: 55px;
+        }
+        
 
 /*burgermenu slut*/
 
@@ -132,11 +149,20 @@
             grid-gap: 20px;
         }
 
+        @media only screen and (max-width: 418px) {
+
+        #liste{
+            padding-left: 4%;
+            padding-right: 4%;
+            }
+        }
+        
         .ret {
             margin: 0;
 
             display: grid;
             grid-template-rows: [row1-start] 0.4fr [row2-start] 0.4fr [row3-start] 0.4fr [row4-start] auto [row4-end];
+            background-color: rgba(255, 255, 255, 0.47);
 
         }
 
@@ -198,6 +224,12 @@
         button {
             background-color: #f2bf7c;
             color: #fef6c1;
+            border:none;
+        }
+        .filter{
+            font-family: 'Avenir LT Std 95 Black';
+            padding-top: 4px;
+            padding: 10px;
         }
 
         h1 {
@@ -222,18 +254,19 @@
         <header>
 <nav>
             <ul id="pc">
-                <li style="float:left"><img src="logo/taco_logo.svg"></li>
-                <li><a href="#">KONTAKT</a></li>
-                <li><a href="#">BORDBESTILLING</a></li>
-                <li><a class="valgt" href="menu.html">MENU</a></li>
-                <li><a href="index.html">FORSIDE</a></li>
+                <li style="float:left"><a href="index.html"><img src="logo/taco_logo.svg"></a></li>
+                <li><a class="menu_liste" href="#">KONTAKT</a></li>
+                <li><a class="menu_liste" href="#">BORDBESTILLING</a></li>
+                <li><a class="valgt menu_liste" href="menu.html">MENU</a></li>
+                <li><a class="menu_liste" href="index.html">FORSIDE</a></li>
             </ul>
             <div id="menuknap">☰</div>
+    <div id=logo><a href="index.html"><img src="logo/taco_logo.svg"></a></div>
             <ul id="burgermenu" class="hidden">
-                <li><a href="index.html">FORSIDE</a></li>
-                <li><a href="menu.html">MENU</a></li>
-                <li><a href="#">BORDBESTILLING</a></li>
-                <li><a href="#">KONTAKT</a></li>
+                <li><a class="menu_liste" href="index.html">FORSIDE</a></li>
+                <li><a class="menu_liste" href="menu.html">MENU</a></li>
+                <li><a class="menu_liste" href="#">BORDBESTILLING</a></li>
+                <li><a class="menu_liste" href="#">KONTAKT</a></li>
             </ul>
 
         </nav>
